@@ -1,0 +1,66 @@
+import 'package:counter_app_practice/counter_controller/counter_controllers.dart';
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+
+  final Controller controller= Get.put(Controller());
+
+    return GetMaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Counter App"),
+        ),
+        body: Center( // Center widget aligns child to the center of the screen
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Centers the content vertically
+            crossAxisAlignment: CrossAxisAlignment.center, // Centers content horizontally in the Column
+            children: [
+
+
+              Obx(()=> Text( controller.count.value.toString(),
+                style: TextStyle(fontSize: 40.0),)
+
+              ),
+
+              // Optional styling for better visibility
+              SizedBox(height: 40,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.decreament();
+                    },
+                    icon: Icon(
+                      Icons.remove,
+                      color: Colors.red,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      controller.increament();
+                    },
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

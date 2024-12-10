@@ -1,0 +1,39 @@
+Follow Below Steps:
+1: add getx dependency 
+2: home screen set ui with StatefulWidget
+3: need another dart file (Counter Controllers)
+4: Need A class Like =========> 
+
+             class Controller extends GetxController{}
+
+
+5: set initial value , increament function and decreament function like======>   
+
+             RxInt count= RxInt(0);
+
+             decreament(){
+                count.value--;
+             }
+
+             increament(){
+                count.value++;
+             }
+
+6: Read Data from controller ========>
+               final Controller controller= Get.put(Controller());
+7: wrap with Obx like============>
+
+              Obx(()=> Text( controller.count.value.toString(),
+                style: TextStyle(fontSize: 40.0),)
+
+              ),
+
+
+
+
+
+
+
+
+
+ 
